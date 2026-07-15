@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Hells - Guía de Repetición de Gimnasios PokéMMO</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title> Guia De Gym 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;800&family=Montserrat:wght=300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0b10;
@@ -271,7 +270,7 @@
             font-style: italic;
         }
 
-        /* Interactive Map placeholder / SVG illustrations */
+        /* Map Section */
         .map-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -302,18 +301,20 @@
         .map-illustration {
             background: #0f101a;
             border-radius: 12px;
-            padding: 20px;
+            padding: 10px;
             border: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 250px;
+            overflow: hidden;
         }
 
-        .map-svg {
-            width: 100%;
+        .map-png {
+            max-width: 100%;
             height: auto;
-            max-width: 400px;
+            border-radius: 8px;
+            object-fit: contain;
         }
 
         /* Tabs styling for regions */
@@ -422,170 +423,6 @@
             border-radius: 6px;
             border-left: 3px solid var(--accent-gold);
         }
-
-        .badge-danger {
-            background: rgba(255, 62, 62, 0.2);
-            color: var(--accent-red);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        /* Info boxes */
-        .info-card {
-            background: #181b2a;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .info-card h4 {
-            color: #fff;
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .info-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .info-card ul {
-            list-style-position: inside;
-            margin-left: 10px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .info-card ul li {
-            margin-bottom: 6px;
-        }
-
-        /* Live Calculator */
-        .calc-wrapper {
-            background: linear-gradient(135deg, #131520 0%, #1c1e30 100%);
-            border: 1px solid var(--accent-orange);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(255, 140, 59, 0.05);
-        }
-
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 800px) {
-            .calc-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .calc-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .input-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .input-group input, .input-group select {
-            background-color: #0c0d15;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: #fff;
-            padding: 12px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--accent-orange);
-            box-shadow: 0 0 10px rgba(255, 140, 59, 0.2);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .checkbox-group input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--accent-orange);
-        }
-
-        .calc-results {
-            background-color: #0c0d15;
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #1c1e30;
-        }
-
-        .result-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .result-label {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .result-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .result-value.best {
-            color: #00e575;
-            text-shadow: 0 0 10px rgba(0, 229, 117, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo-title {
-                font-size: 1.8rem;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -598,7 +435,6 @@
 
     <div class="container">
 
-        <!-- Stats Section -->
         <div class="stats-summary">
             <div class="stat-card">
                 <h3>Gimnasios Sencillos</h3>
@@ -617,12 +453,10 @@
             </div>
         </div>
 
-        <!-- Team Section -->
         <section id="team">
             <h2 class="section-title">El Equipo de los 7 Infiernos</h2>
             <div class="team-grid">
                 
-                <!-- Typhlosion -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Typhlosion</span>
@@ -646,7 +480,6 @@
                     </div>
                 </div>
 
-                <!-- Blastoise -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Blastoise</span>
@@ -670,7 +503,6 @@
                     </div>
                 </div>
 
-                <!-- Vanilluxe -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Vanilluxe</span>
@@ -694,7 +526,6 @@
                     </div>
                 </div>
 
-                <!-- Aerodactyl -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Aerodactyl</span>
@@ -718,7 +549,6 @@
                     </div>
                 </div>
 
-                <!-- Excadrill -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Excadrill</span>
@@ -742,7 +572,6 @@
                     </div>
                 </div>
 
-                <!-- Togekiss -->
                 <div class="poke-card">
                     <div class="poke-header">
                         <span class="poke-name">Togekiss</span>
@@ -769,90 +598,67 @@
             </div>
         </section>
 
-        <!-- Dynamic Calculator Section -->
-        <section id="calculator">
-            <h2 class="section-title">Calculadora Interactiva de Beneficios (Amuleto)</h2>
-            <div class="calc-wrapper">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">
-                            Ingresa tus estadísticas habituales para determinar qué amuleto te brindará las mayores ganancias netas por hora.
-                        </p>
-                        <div class="input-group">
-                            <label for="gym-count">Gimnasios Derrotados por Hora (n)</label>
-                            <input type="number" id="gym-count" value="32" min="1" max="100">
-                        </div>
-                        <div class="input-group">
-                            <label for="base-payout">Pago Base Promedio por Gimnasio ($)</label>
-                            <input type="number" id="base-payout" value="8900">
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="donor-status" checked>
-                            <label for="donor-status">¿Tienes Estado de Donador (+5%)?</label>
-                        </div>
-                    </div>
-                    <div class="calc-results">
-                        <h4 style="color: #fff; margin-bottom: 10px;">Análisis de Beneficios Netos</h4>
-                        
-                        <div class="result-row">
-                            <span class="result-label">Ingresos Base sin Amuleto:</span>
-                            <span class="result-value" id="base-net">$0</span>
-                        </div>
-                        <div class="result-row">
-                            <span class="result-label">Moneda Amuleto (+50% / Costo $19k):</span>
-                            <span class="result-value" id="amulet-net">$0</span>
-                        </div>
-                        <div class="result-row">
-                            <span class="result-label">Amuleto Riquezas (+75% / Costo $75k):</span>
-                            <span class="result-value" id="riches75-net">$0</span>
-                        </div>
-                        <div class="result-row">
-                            <span class="result-label">Amuleto Riquezas (+100% / Costo $115k):</span>
-                            <span class="result-value" id="riches100-net">$0</span>
-                        </div>
-
-                        <div style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; font-size: 0.9rem; color: var(--accent-gold); text-align: center; font-weight: 600;" id="calc-advice">
-                            Calculando la mejor opción...
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Route & Guide Section -->
         <section id="routing">
             <h2 class="section-title">Enrutamiento y Combates por Región</h2>
             <div class="tabs-container">
                 <div class="tabs-header">
-                    <button class="tab-btn active" onclick="openRegion(event, 'hoenn')">Hoenn</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'sinnoh')">Sinnoh</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'kanto')">Kanto</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'unova')">Unova</button>
+                    <button class="tab-btn active" onclick="openRegion(event, 'kanto')">Kanto</button>
                     <button class="tab-btn" onclick="openRegion(event, 'johto')">Johto</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'special')">Morimoto & Cynthia</button>
+                    <button class="tab-btn" onclick="openRegion(event, 'hoenn')">Hoenn</button>
+                    <button class="tab-btn" onclick="openRegion(event, 'sinnoh')">Sinnoh</button>
+                    <button class="tab-btn" onclick="openRegion(event, 'teselia')">Teselia</button>
                 </div>
 
-                <!-- HOENN -->
-                <div id="hoenn" class="tab-content active">
+                <div id="kanto" class="tab-content active">
+                    <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">
+                            <h4>Ruta Kanto</h4>
+                            <p>Ruta inicial optimizada para maximizar ingresos evitando retrasos climatológicos molestos.</p>
+                        </div>
+                        <div class="map-illustration">
+                            <img src="kanto.png" alt="Mapa Kanto" class="map-png">
+                        </div>
+                    </div>
+                    <div class="route-timeline">
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">Gimnasio Celeste</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Limpia rápidamente con Avalancha y Estallido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="johto" class="tab-content">
+                    <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">
+                            <h4>Ruta Johto</h4>
+                            <p>Enrutamiento directo para barrer líderes con cobertura de tipos eficaz.</p>
+                        </div>
+                        <div class="map-illustration">
+                            <img src="johto.png" alt="Mapa Johto" class="map-png">
+                        </div>
+                    </div>
+                    <div class="route-timeline">
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">Gimnasio Trigal</span>
+                                <span class="step-leads">Líderes: Togekiss + Blastoise</span>
+                            </div>
+                            <p class="step-notes">Vozarrón y Salpicar barren el campo sin despeinarse.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hoenn" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
                         <div class="map-info">
                             <h4>Ruta Hoenn (Sin Curaciones)</h4>
                             <p>El primer checkpoint y una de las regiones más consistentes. Se recomienda optimizar el uso de Teletransporte Ocarina.</p>
                         </div>
                         <div class="map-illustration">
-                            <!-- SVG Map for Hoenn routing -->
-                            <svg class="map-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="400" height="250" rx="10" fill="#0c0d15"/>
-                                <path d="M 300 80 L 180 100 L 110 130 L 70 110 L 80 180 L 150 210 L 220 70" fill="none" stroke="#ff3e3e" stroke-width="2" stroke-dasharray="5 5" />
-                                <!-- Points -->
-                                <circle cx="300" cy="80" r="8" fill="#ffd700"/><text x="315" y="85" fill="#fff" font-size="12">1. Algaria</text>
-                                <circle cx="180" cy="100" r="6" fill="#ff8c3b"/><text x="195" y="105" fill="#fff" font-size="10">2. Lavacalda</text>
-                                <circle cx="110" cy="130" r="6" fill="#ff8c3b"/><text x="125" y="135" fill="#fff" font-size="10">3. Malvalona</text>
-                                <circle cx="70" cy="110" r="6" fill="#ff8c3b"/><text x="50" y="95" fill="#fff" font-size="10">4. Férrica</text>
-                                <circle cx="80" cy="180" r="6" fill="#ff8c3b"/><text x="40" y="185" fill="#fff" font-size="10">5. Petalia</text>
-                                <circle cx="150" cy="210" r="6" fill="#ff8c3b"/><text x="165" y="215" fill="#fff" font-size="10">6. Azuliza</text>
-                                <circle cx="220" cy="70" r="8" fill="#ffd700"/><text x="235" y="75" fill="#fff" font-size="12">7. Arborada</text>
-                            </svg>
+                            <img src="hoenn.png" alt="Mapa Hoenn" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
@@ -905,7 +711,6 @@
                     </div>
                 </div>
 
-                <!-- SINNOH -->
                 <div id="sinnoh" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
                         <div class="map-info">
@@ -913,15 +718,7 @@
                             <p>Optimiza los cambios de clima. Evita el gimnasio de Punta Nieve debido a las molestas habilidades de evasión (Froslass) y absorción (Heatran).</p>
                         </div>
                         <div class="map-illustration">
-                            <svg class="map-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="400" height="250" rx="10" fill="#0c0d15"/>
-                                <path d="M 320 180 L 280 110 L 180 110 L 160 180 L 100 160" fill="none" stroke="#ffd700" stroke-width="2" stroke-dasharray="5 5" />
-                                <circle cx="320" cy="180" r="8" fill="#ffd700"/><text x="270" y="195" fill="#fff" font-size="11">8. Marina</text>
-                                <circle cx="280" cy="110" r="6" fill="#ff8c3b"/><text x="295" y="115" fill="#fff" font-size="10">9. Rocavelo</text>
-                                <circle cx="180" cy="110" r="6" fill="#ff8c3b"/><text x="170" y="95" fill="#fff" font-size="10">10. Vetusta</text>
-                                <circle cx="160" cy="180" r="6" fill="#ff8c3b"/><text x="175" y="185" fill="#fff" font-size="10">11. Pirita</text>
-                                <circle cx="100" cy="160" r="8" fill="#ffd700"/><text x="60" y="150" fill="#fff" font-size="11">12. Canal</text>
-                            </svg>
+                            <img src="sinnoh.png" alt="Mapa Sinnoh" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
@@ -958,305 +755,58 @@
                                 <span class="step-title">12. Gimnasio Canal</span>
                                 <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
                             </div>
-                            <p class="step-notes">Si hay tormenta de arena, usa Día Soleado con Aerodactyl. Si persiste la lluvia extrema, cambia ambos leads a Vanilluxe + Blastoise.</p>
+                            <p class="step-notes">Si hay tormenta de arena, usa Día Soleado con Aerodactyl. Si persiste la lluvia extrema...</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- KANTO -->
-                <div id="kanto" class="tab-content">
-                    <div class="route-timeline">
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">13. Gimnasio Carmín</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
-                            </div>
-                            <p class="step-notes"><span class="badge-danger">¡Peligro!</span> Si usas un Excadrill Firme, el Jolteon/Raichu enemigo lo superará en velocidad, pudiendo paralizar o fulminar a tu Aerodactyl con Placaje Eléctrico.</p>
+                <div id="teselia" class="tab-content">
+                    <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">
+                            <h4>Ruta Teselia</h4>
+                            <p>Enfréntate a los desafíos finales optimizando los counters del equipo de Unova.</p>
                         </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">14. Gimnasio Azulona</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Si sale el sol, cambia Typhlosion por Vanilluxe (excepto si el oponente es Victreebel, contra él no cambies). Si Dragonite lidera, cambia Typhlosion por Vanilluxe, y al siguiente turno cambia Aerodactyl por Typhlosion.</p>
+                        <div class="map-illustration">
+                            <img src="teselia.png" alt="Mapa Teselia" class="map-png">
                         </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">15. Gimnasio Canela</span>
-                                <span class="step-leads">Líderes: Cualquiera + Blastoise</span>
-                            </div>
-                            <p class="step-notes">Si se activa el sol, haz cambio instantáneo de tu acompañante por Vanilluxe para recuperar el control climático.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">16. Gimnasio Plateada</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
-                            </div>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">17. Gimnasio Azafrán</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
-                            </div>
-                            <p class="step-notes">Comprueba los PP del movimiento Avalancha (Rock Slide) de Aerodactyl antes de avanzar. Necesitas al menos 1.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">18. Gimnasio Fucsia</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Usa Avalancha con Excadrill. Si Aerodactyl no tiene PP en Avalancha, puedes aplicar un Especial X en Typhlosion para compensar el daño.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- UNOVA -->
-                <div id="unova" class="tab-content">
-                    <div class="info-card">
-                        <h4>Atención: Región Exigente (Curar 1 vez)</h4>
-                        <p>El gimnasio de Esmalte se omite por completo debido a su inconsistencia táctica y composiciones molestas (Chansey, Stoutland con intimidación, y Dragonite/Braviary voladores).</p>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">19. Gimnasio Porcelana</span>
-                                <span class="step-leads">Líderes: Blastoise + Vanilluxe</span>
-                            </div>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">20. Gimnasio Loza</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Vanilluxe</span>
-                            </div>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">21. Gimnasio Gres (Variante Fuego)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Blastoise</span>
-                            </div>
-                            <p class="step-notes">Si recibes Intimidación dos veces, pivota Aerodactyl > Excadrill > Aerodactyl para reiniciar el stat. Si hay un Typhlosion enemigo, usa Danza Lluvia con Aerodactyl.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">22. Gimnasio Gres (Variante Planta)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">23. Gimnasio Gres (Variante Agua)</span>
-                                <span class="step-leads">Líderes: Togekiss + Excadrill</span>
-                            </div>
-                            <p class="step-notes">Si sufres doble Intimidación de salida o llueve, cambia Excadrill > Vanilluxe > Excadrill. Si solo sufres un -1 de ataque frente a Simipour o Stoutland, no es necesario cambiar.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">24. Gimnasio Mayólica</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Si un Ninetales enemigo con Absorbe Fuego entra al campo, saca a Typhlosion inmediatamente por Excadrill. <strong>¡CURAR DESPUÉS DE ESTE GIMNASIO!</strong></p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">25. Gimnasio Caolín</span>
-                                <span class="step-leads">Líderes: Typhlosion + Vanilluxe</span>
-                            </div>
-                            <p class="step-notes">Si tu Typhlosion o Vanilluxe caen derrotados, introduce a Togekiss o Blastoise (prioriza usar Ventisca sobre Salpicar en este caso).</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">26. Gimnasio Fayenza</span>
-                                <span class="step-leads">Líderes: Togekiss + Blastoise</span>
-                            </div>
-                            <p class="step-notes">Si se activa la arena, cambia Togekiss por Vanilluxe. Contra Seismitoad, realiza el pivote Blastoise > Vanilluxe > Excadrill. Si Excadrill se quema, cúralo con el compañero.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">27. Gimnasio Teja</span>
+                                <span class="step-title">Gimnasio Teja</span>
                                 <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
                             </div>
-                            <p class="step-notes">Usa Día Soleado con Aerodactyl para asegurar que el Estallido barra con facilidad.</p>
+                            <p class="step-notes">Estallido y Avalancha eliminan con facilidad a la gran mayoría de sus Pokémon.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- JOHTO -->
-                <div id="johto" class="tab-content">
-                    <div class="info-card">
-                        <h4>Ruta Johto (Sin Curaciones)</h4>
-                        <p>Contiene los gimnasios más exigentes. No dudes en curar al final si planeas continuar hacia Olivino.</p>
-                    </div>
-                    <div class="route-timeline">
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">28. Gimnasio Trigal</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">29. Gimnasio Malva</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Vanilluxe</span>
-                            </div>
-                            <p class="step-notes">Si Pelipper lidera la batalla, usa Viento Hielo con Vanilluxe.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">30. Gimnasio Azalea</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Para combatir la banda focus de Shedinja. Alternativa experimental segura: Aerodactyl + Excadrill. Usa Día Soleado si hay clima adverso.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">31. Gimnasio Caoba</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Usa Día Soleado en el primer turno para maximizar el daño y deshacerte del hielo.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">32. Gimnasio Olivino (Opcional - Requiere Curación)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Solo entra aquí si te queda tiempo en tu amuleto. Si Typhlosion cae, saca a Excadrill de la reserva.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SPECIAL -->
-                <div id="special" class="tab-content">
-                    <div class="info-card">
-                        <h4>Morimoto & Cynthia: Preparaciones Especiales</h4>
-                        <p>Requieren una estrategia diferente de setup rápido. Se recomienda llevar un colocador de rocas seguro y un barredor potente con estadísticas de boost.</p>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="poke-card">
-                            <div class="poke-header">
-                                <span class="poke-name">Estrategia Morimoto</span>
-                                <span class="poke-badge">Setup Físico</span>
-                            </div>
-                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">
-                                Lidera con <strong>Chansey</strong> (Mineral Evolutivo) con Trampa Rocas y Teletransporte. Coloca las rocas para romper bandas focus, y usa Teletransporte para sacar de forma limpia a un <strong>Scizor</strong> (Metrónomo) con Danza Espada + Puño Bala.
-                            </p>
-                        </div>
-                        <div class="poke-card">
-                            <div class="poke-header">
-                                <span class="poke-name">Estrategia Cynthia</span>
-                                <span class="poke-badge">Setup Especial</span>
-                            </div>
-                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">
-                                Usa igualmente un colocador de rocas y saca a <strong>Volcarona</strong>. Usa Danza Aleteo para aumentar al máximo tu velocidad y ataque especial, luego barre con Danza Llama, Zumbido y Gigadrenado (este último crucial para tumbar a Gastrodon).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic mechanics section -->
-        <section id="mechanics">
-            <h2 class="section-title">Mecánicas de Combate e Imprevistos</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div class="info-card">
-                    <h4>El Truco del Spam A</h4>
-                    <p>Para acelerar tus batallas y maximizar la cantidad de gimnasios vencidos, coloca tus ataques principales en el primer slot.</p>
-                    <p>Puedes usar la combinación de teclas <strong>CTRL + A</strong> para seleccionar de forma rápida los movimientos previamente configurados sin tener que pulsar manualmente.</p>
-                </div>
-                <div class="info-card">
-                    <h4>Desviaciones y Climas Eficaces</h4>
-                    <p>Monitorea las habilidades climáticas para reaccionar inmediatamente:</p>
-                    <ul>
-                        <li><strong>Lluvia:</strong> Duplica velocidad de pokes con Nado Rápido (Floatzel, Kabutops).</li>
-                        <li><strong>Sol:</strong> Duplica velocidad de Clorofila (Lilligant, Venusaur).</li>
-                        <li><strong>Arena:</strong> Sube Sp.Def de roca un 50% y activa Ímpetu Arena.</li>
-                    </ul>
-                </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Live Calculator Logic & Tabs Switcher -->
     <script>
-        // Tab system
-        function openRegion(evt, regionId) {
+        function openRegion(evt, regionName) {
             var i, tabcontent, tablinks;
+            
+            // Ocultar todas las pestañas
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].classList.remove("active");
             }
+            
+            // Quitar la clase active de todos los botones
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
-            document.getElementById(regionId).classList.add("active");
+            
+            // Mostrar la pestaña actual y marcar el botón como activo
+            document.getElementById(regionName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
-
-        // Live calculator logic
-        const gymCountInput = document.getElementById('gym-count');
-        const basePayoutInput = document.getElementById('base-payout');
-        const donorCheckbox = document.getElementById('donor-status');
-
-        function formatCurrency(val) {
-            return '$' + Math.round(val).toLocaleString('es-ES');
-        }
-
-        function calculateProfits() {
-            const n = parseFloat(gymCountInput.value) || 0;
-            const avgBase = parseFloat(basePayoutInput.value) || 0;
-            const hasDonor = donorCheckbox.checked;
-
-            // Calculate base
-            let baseGain = avgBase * n;
-            if (hasDonor) {
-                baseGain *= 1.05; // 5% bonus
-            }
-
-            // Amulet Coin: +50% boost (multiplier 1.5), cost 19,000
-            const amuletProfit = (baseGain * 1.5) - 19000;
-
-            // Riches 75: +75% boost (multiplier 1.75), cost 75,000
-            const riches75Profit = (baseGain * 1.75) - 75000;
-
-            // Riches 100: +100% boost (multiplier 2.0), cost 115,000
-            const riches100Profit = (baseGain * 2.0) - 115000;
-
-            // Update UI
-            document.getElementById('base-net').innerText = formatCurrency(baseGain);
-            document.getElementById('amulet-net').innerText = formatCurrency(amuletProfit);
-            document.getElementById('riches75-net').innerText = formatCurrency(riches75Profit);
-            document.getElementById('riches100-net').innerText = formatCurrency(riches100Profit);
-
-            // Determine best option
-            const options = [
-                { name: 'Moneda Amuleto (+50%)', val: amuletProfit, id: 'amulet-net' },
-                { name: 'Amuleto de Riquezas (+75%)', val: riches75Profit, id: 'riches75-net' },
-                { name: 'Amuleto de Riquezas (+100%)', val: riches100Profit, id: 'riches100-net' }
-            ];
-
-            // Reset class
-            options.forEach(opt => document.getElementById(opt.id).classList.remove('best'));
-
-            let best = options[0];
-            for (let i = 1; i < options.length; i++) {
-                if (options[i].val > best.val) {
-                    best = options[i];
-                }
-            }
-
-            document.getElementById(best.id).classList.add('best');
-            document.getElementById('calc-advice').innerText = `La opción óptima para tu velocidad actual (${n} gimnasios) es usar: ${best.name} (Beneficio neto: ${formatCurrency(best.val)})`;
-        }
-
-        // Add event listeners
-        gymCountInput.addEventListener('input', calculateProfits);
-        basePayoutInput.addEventListener('input', calculateProfits);
-        donorCheckbox.addEventListener('change', calculateProfits);
-
-        // Initial execution
-        calculateProfits();
     </script>
+
 </body>
 </html>
