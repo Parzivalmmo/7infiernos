@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Hells - Guía de Repetición de Gimnasios PokéMMO</title>
+    <title> Guía de  de Gimnasios PokéMMO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;800&family=Montserrat:wght=300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -612,115 +612,15 @@
             <h2 class="section-title">Enrutamiento y Combates por Región</h2>
             <div class="tabs-container">
                 <div class="tabs-header">
-                    <button class="tab-btn active" onclick="openRegion(event, 'kanto')">Kanto</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'johto')">Johto</button>
-                    <button class="tab-btn" onclick="openRegion(event, 'hoenn')">Hoenn</button>
+                    <button class="tab-btn active" onclick="openRegion(event, 'hoenn')">Hoenn</button>
                     <button class="tab-btn" onclick="openRegion(event, 'sinnoh')">Sinnoh</button>
                     <button class="tab-btn" onclick="openRegion(event, 'teselia')">Teselia</button>
-                </div>
-
-                <!-- KANTO -->
-                <div id="kanto" class="tab-content active">
-                    <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">
-                            <h4>Ruta Kanto (Optimizada)</h4>
-                            <p>Prioriza daño masivo rápido. Evita perder turnos con climas innecesarios y limpia usando la cobertura elemental de Blastoise y Typhlosion.</p>
-                        </div>
-                        <div class="map-illustration">
-                            <img src="kanto.png" alt="Mapa Kanto" class="map-png">
-                        </div>
-                    </div>
-                    <div class="route-timeline">
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">1. Gimnasio Celeste (Misty)</span>
-                                <span class="step-leads">Líderes: Togekiss + Vanilluxe</span>
-                            </div>
-                            <p class="step-notes">Usa Vozarrón y Ventisca. Si el clima cambia a lluvia pesada, saca a Vanilluxe para reiniciar con Granizo o mete a Excadrill.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">2. Gimnasio Carmín (Lt. Surge)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
-                            </div>
-                            <p class="step-notes">Terremoto de Excadrill con Rompemoldes limpia los robustos y levitantes de tipo Eléctrico sin problemas. Aerodactyl es inmune gracias a Volador.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">3. Gimnasio Azul (Erika)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Usa Día Soleado con Aerodactyl en el primer turno para potenciar el Estallido de Typhlosion y barrer instantáneamente.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">4. Gimnasio Azafrán (Sabrina)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Vozarrón + Estallido barren los frágiles Pokémon de tipo Psíquico. Cuidado con posibles usuarios de Banda Focus.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">5. Gimnasio Fucsia (Koga)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Spam de Avalancha y Estallido. Si hay amenazas con Levitación o Robustez, cambia a Excadrill.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- JOHTO -->
-                <div id="johto" class="tab-content">
-                    <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">
-                            <h4>Ruta Johto (Fast Run)</h4>
-                            <p>Ruta directa. Controla las amenazas físicas con retrocesos provocados por Avalancha o parálisis/daño masivo neutro.</p>
-                        </div>
-                        <div class="map-illustration">
-                            <img src="johto.png" alt="Mapa Johto" class="map-png">
-                        </div>
-                    </div>
-                    <div class="route-timeline">
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">1. Gimnasio Trigal (Whitney)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Estallido y Vozarrón eliminan las defensas normales. Si sale un tipo Roca/Acero de imprevisto, cambia a Excadrill de inmediato.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">2. Gimnasio Iris (Morty)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Estallido limpia rápido. Togekiss es inmune a los movimientos de tipo Tierra y resiste Sombra Vil.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">3. Gimnasio Orquídea (Chuck)</span>
-                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">El daño porSTAB Volador y Hada de Togekiss es letal para sus Pokémon de tipo Lucha.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">4. Gimnasio Olivo (Yasmina)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
-                            </div>
-                            <p class="step-notes">Usa Día Soleado para contrarrestar cualquier counter de agua y potenciar a Typhlosion contra el tipo Acero.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">5. Gimnasio Endrino (Débora)</span>
-                                <span class="step-leads">Líderes: Aerodactyl + Vanilluxe</span>
-                            </div>
-                            <p class="step-notes">Usa Viento Hielo y Ventisca con Vanilluxe para congelar y barrer a sus Dragones.</p>
-                        </div>
-                    </div>
+                    <button class="tab-btn" onclick="openRegion(event, 'kanto')">Kanto</button>
+                    <button class="tab-btn" onclick="openRegion(event, 'johto')">Johto</button>
                 </div>
 
                 <!-- HOENN -->
-                <div id="hoenn" class="tab-content">
+                <div id="hoenn" class="tab-content active">
                     <div class="map-grid" style="margin-bottom: 25px;">
                         <div class="map-info">
                             <h4>Ruta Hoenn (Sin Curaciones)</h4>
@@ -876,6 +776,106 @@
                                 <span class="step-leads">Líderes: Aerodactyl + Vanilluxe</span>
                             </div>
                             <p class="step-notes">Saca provecho de Vanilluxe con Pañuelo Elección y usa Ventisca de forma masiva para contrarrestar a su equipo de Dragones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KANTO -->
+                <div id="kanto" class="tab-content">
+                    <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">
+                            <h4>Ruta Kanto (Optimizada)</h4>
+                            <p>Prioriza daño masivo rápido. Evita perder turnos con climas innecesarios y limpia usando la cobertura elemental de Blastoise y Typhlosion.</p>
+                        </div>
+                        <div class="map-illustration">
+                            <img src="kanto.png" alt="Mapa Kanto" class="map-png">
+                        </div>
+                    </div>
+                    <div class="route-timeline">
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">1. Gimnasio Celeste (Misty)</span>
+                                <span class="step-leads">Líderes: Togekiss + Vanilluxe</span>
+                            </div>
+                            <p class="step-notes">Usa Vozarrón y Ventisca. Si el clima cambia a lluvia pesada, saca a Vanilluxe para reiniciar con Granizo o mete a Excadrill.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">2. Gimnasio Carmín (Lt. Surge)</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Excadrill</span>
+                            </div>
+                            <p class="step-notes">Terremoto de Excadrill con Rompemoldes limpia los robustos y levitantes de tipo Eléctrico sin problemas. Aerodactyl es inmune gracias a Volador.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">3. Gimnasio Azul (Erika)</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Usa Día Soleado con Aerodactyl en el primer turno para potenciar el Estallido de Typhlosion y barrer instantáneamente.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">4. Gimnasio Azafrán (Sabrina)</span>
+                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Vozarrón + Estallido barren los frágiles Pokémon de tipo Psíquico. Cuidado con posibles usuarios de Banda Focus.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">5. Gimnasio Fucsia (Koga)</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Spam de Avalancha y Estallido. Si hay amenazas con Levitación o Robustez, cambia a Excadrill.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOHTO -->
+                <div id="johto" class="tab-content">
+                    <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">
+                            <h4>Ruta Johto (Fast Run)</h4>
+                            <p>Ruta directa. Controla las amenazas físicas con retrocesos provocados por Avalancha o parálisis/daño masivo neutro.</p>
+                        </div>
+                        <div class="map-illustration">
+                            <img src="johto.png" alt="Mapa Johto" class="map-png">
+                        </div>
+                    </div>
+                    <div class="route-timeline">
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">1. Gimnasio Trigal (Whitney)</span>
+                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Estallido y Vozarrón eliminan las defensas normales. Si sale un tipo Roca/Acero de imprevisto, cambia a Excadrill de inmediato.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">2. Gimnasio Iris (Morty)</span>
+                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Estallido limpia rápido. Togekiss es inmune a los movimientos de tipo Tierra y resiste Sombra Vil.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">3. Gimnasio Orquídea (Chuck)</span>
+                                <span class="step-leads">Líderes: Togekiss + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">El daño por STAB Volador y Hada de Togekiss es letal para sus Pokémon de tipo Lucha.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">4. Gimnasio Olivo (Yasmina)</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Typhlosion</span>
+                            </div>
+                            <p class="step-notes">Usa Día Soleado para contrarrestar cualquier counter de agua y potenciar a Typhlosion contra el tipo Acero.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">5. Gimnasio Endrino (Débora)</span>
+                                <span class="step-leads">Líderes: Aerodactyl + Vanilluxe</span>
+                            </div>
+                            <p class="step-notes">Usa Viento Hielo y Ventisca con Vanilluxe para congelar y barrer a sus Dragones.</p>
                         </div>
                     </div>
                 </div>
