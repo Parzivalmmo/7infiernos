@@ -17,7 +17,7 @@
             --accent-orange: #ff8c3b;
             --accent-gold: #ffcc00;
             --text-main: #ccff00; /* Verde Limón */
-            --text-muted: #ccff00; /* Todo el texto secundario también en Verde Limón */
+            --text-muted: #ccff00; 
             --border-color: #000000;
             /* Borde de cómic súper marcado */
             --border-comic: 4px solid #000000;
@@ -207,7 +207,7 @@
 
         .step-leads {
             background-color: var(--accent-red);
-            color: var(--text-main); /* Cambiado de blanco a Verde Limón */
+            color: var(--text-main); /* Verde Limón */
             border: 3px solid #000;
             padding: 6px 14px;
             font-weight: 700;
@@ -219,7 +219,7 @@
 
         .step-notes {
             font-size: 1.2rem;
-            color: var(--text-main); /* Cambiado de var(--text-muted) viejo a Verde Limón */
+            color: var(--text-main); /* Verde Limón */
             background: rgba(0, 0, 0, 0.4);
             padding: 15px;
             border-left: 6px solid var(--accent-orange);
@@ -231,6 +231,55 @@
 
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+
+        /* Botones de Navegación Flotantes (Comic Style) */
+        .scroll-nav-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .scroll-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main); /* Verde Limón */
+            border: var(--border-comic);
+            width: 55px;
+            height: 55px;
+            font-family: var(--font-title);
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-comic-small);
+            transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+            transform: skew(-3deg);
+            outline: none;
+            user-select: none;
+        }
+
+        .scroll-btn:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+            transform: translateY(-3px) skew(-3deg);
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .scroll-btn:active {
+            transform: translateY(1px) skew(-3deg);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        /* El botón "subir" inicia oculto porque cargamos arriba del todo */
+        #btn-scroll-up {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0) skew(-3deg);
+        }
     </style>
 </head>
 <body>
@@ -558,6 +607,12 @@
         </section>
     </div>
 
+    <!-- Botonera Flotante -->
+    <div class="scroll-nav-container">
+        <button id="btn-scroll-up" class="scroll-btn" onclick="scrollToTop()" title="Subir al inicio">▲</button>
+        <button id="btn-scroll-down" class="scroll-btn" onclick="scrollToBottom()" title="Bajar al final">▼</button>
+    </div>
+
     <script>
         function openRegion(evt, regionName) {
             // Remueve la clase active de todos los contenidos de pestaña
@@ -573,7 +628,53 @@
             // Activa el panel y el botón actual
             document.getElementById(regionName).classList.add("active");
             evt.currentTarget.classList.add("active");
+            
+            // Forzar actualización de visibilidad del botón bajar después de cambiar de región
+            setTimeout(checkScrollPosition, 50);
         }
+
+        // Funciones de scroll suave
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+        }
+
+        // Control dinámico de los botones según la altura del scroll
+        function checkScrollPosition() {
+            const btnUp = document.getElementById('btn-scroll-up');
+            const btnDown = document.getElementById('btn-scroll-down');
+            const scrollY = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Mostrar "Subir" solo si hemos bajado más de 250px
+            if (scrollY > 250) {
+                btnUp.style.opacity = '1';
+                btnUp.style.pointerEvents = 'auto';
+                btnUp.style.transform = 'scale(1) skew(-3deg)';
+            } else {
+                btnUp.style.opacity = '0';
+                btnUp.style.pointerEvents = 'none';
+                btnUp.style.transform = 'scale(0) skew(-3deg)';
+            }
+
+            // Ocultar "Bajar" si ya estamos casi al final de la página (margen de 60px)
+            if (scrollY < maxScroll - 60) {
+                btnDown.style.opacity = '1';
+                btnDown.style.pointerEvents = 'auto';
+                btnDown.style.transform = 'scale(1) skew(-3deg)';
+            } else {
+                btnDown.style.opacity = '0';
+                btnDown.style.pointerEvents = 'none';
+                btnDown.style.transform = 'scale(0) skew(-3deg)';
+            }
+        }
+
+        window.addEventListener('scroll', checkScrollPosition);
+        // Comprobar posición inicial en carga
+        window.addEventListener('load', checkScrollPosition);
     </script>
 
 </body>
