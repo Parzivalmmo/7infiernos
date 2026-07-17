@@ -99,19 +99,9 @@
         /* Map Section */
         .map-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr; /* Simplificado al quitar el texto innecesario */
             gap: 30px;
             align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .map-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .map-info {
-            display: none; /* Oculto si está vacío pero conservado en el DOM */
         }
 
         .map-illustration {
@@ -186,6 +176,8 @@
             position: relative;
             box-shadow: var(--shadow-comic);
             transition: transform 0.2s ease;
+            /* Añadido para posicionar los botones internos */
+            scroll-margin-top: 20px; 
         }
 
         .route-step:hover {
@@ -196,14 +188,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
+            padding-right: 90px; /* Espacio para que el texto no choque con los botones nuevos */
         }
 
         .step-title {
             font-family: var(--font-title);
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--accent-gold);
             text-shadow: 2px 2px 0px #000;
             letter-spacing: 1px;
@@ -213,24 +206,61 @@
             background-color: var(--accent-red);
             color: var(--text-main); /* Verde Limón */
             border: 3px solid #000;
-            padding: 8px 18px;
+            padding: 6px 14px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             box-shadow: var(--shadow-comic-small);
             transform: rotate(-1deg);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
-        /* GIFs más grandes y centrados de forma óptima */
+        /* Nuevos botones internos para saltar de Gym */
+        .step-nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .step-nav-btn {
+            background-color: var(--bg-dark);
+            color: var(--accent-gold);
+            border: 2px solid #000;
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px #000;
+            transition: transform 0.1s, background-color 0.1s;
+        }
+
+        .step-nav-btn:hover {
+            background-color: var(--accent-orange);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .step-nav-btn:active {
+            transform: translateY(1px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        /* Estilo mejorado y AUMENTADO para los minigifs animados */
         .pkmn-gif {
-            width: 90px;  
-            height: 90px; 
+            width: 72px;  /* Aumentado de 48px a 72px */
+            height: 72px; /* Aumentado de 48px a 72px */
             object-fit: contain;
             image-rendering: pixelated; /* Mantiene la estética limpia de píxeles */
-            margin: 0 6px; 
+            margin: 0 6px; /* Espaciado lateral ligeramente aumentado */
         }
 
         .step-notes {
@@ -243,7 +273,7 @@
             border-top: 2px solid #000;
             border-right: 2px solid #000;
             border-bottom: 2px solid #000;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .step-notes:last-child {
@@ -325,14 +355,16 @@
                 <!-- HOENN -->
                 <div id="hoenn" class="tab-content active">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">    
-                        </div>
                         <div class="map-illustration">
                             <img src="Hoenn.png" alt="Mapa Hoenn" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 1 Ciudad Algaria</span>
                                 <span class="step-leads">Líderes: 
@@ -343,6 +375,10 @@
                             <p class="step-notes">◉ Si Excadrill muere por Lucario, entra con Blastoise. Si Aerodactyl cae, entra Typhlosion.</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Lavacalda</span>
                                 <span class="step-leads">Líderes: 
@@ -353,6 +389,10 @@
                             <p class="step-notes">◉ Usa Salpicar y Avalancha</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Malvalona</span>
                                 <span class="step-leads">Líderes: 
@@ -363,6 +403,10 @@
                             <p class="step-notes">◉ Usar avalancha y Estallido</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Férrica</span>
                                 <span class="step-leads">Líderes: 
@@ -373,6 +417,10 @@
                             <p class="step-notes">◉ Usar Avalancha y Terremoto</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Petalia</span>
                                 <span class="step-leads">Líderes: 
@@ -383,6 +431,10 @@
                             <p class="step-notes">◉ ¡Cuidado! Si Chansey o Blissey están en el campo de batalla, saca a Typhlosion por Excadrill y ataca.</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 6 Ciudad Azuliza</span>
                                 <span class="step-leads">Líderes: 
@@ -393,6 +445,10 @@
                             <p class="step-notes">◉ Usar Salpicar y Vozarron</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 7 Ciudad Arborada</span>
                                 <span class="step-leads">Líderes: 
@@ -409,14 +465,16 @@
                 <!-- SINNOH -->
                 <div id="sinnoh" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                          
-                        </div>
                         <div class="map-illustration">
                             <img src="Sinnoh.png" alt="Mapa Sinnoh" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 1 Ciudad Marina</span>
                                 <span class="step-leads">Líderes: 
@@ -427,6 +485,10 @@
                             <p class="step-notes">◉ Si lidera un Lanturn, cambia a Blastoise por Vanilluxe y luego a Excadrill.</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Rocavelo</span>
                                 <span class="step-leads">Líderes: 
@@ -437,6 +499,10 @@
                             <p class="step-notes">◉ Usa Día Soleado con Aerodactyl y Estallido</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Vetusta</span>
                                 <span class="step-leads">Líderes: 
@@ -447,6 +513,10 @@
                             <p class="step-notes">◉ Si sale el sol, cambia Typhlosion por Vanilluxe</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Pirita</span>
                                 <span class="step-leads">Líderes: 
@@ -459,6 +529,10 @@
                                ◉ Si Excadrill cae, entra Blastoise</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Canal</span>
                                 <span class="step-leads">Líderes: 
@@ -476,14 +550,16 @@
                 <!-- TESELIA -->
                 <div id="teselia" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                            
-                        </div>
                         <div class="map-illustration">
                             <img src="teselia.png" alt="Mapa Teselia" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 1 Ciudad Porcelana</span>
                                 <span class="step-leads">Líderes: 
@@ -494,6 +570,10 @@
                             <p class="step-notes">◉ Usa Salpicar y Ventisca</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Loza</span>
                                 <span class="step-leads">Líderes: 
@@ -504,6 +584,10 @@
                             <p class="step-notes">◉ Avalancha y Ventisca</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Gress Líder Fuego</span>
                                 <span class="step-leads">Líderes: 
@@ -523,6 +607,10 @@
                             </p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Mayólica</span>
                                 <span class="step-leads">Líderes: 
@@ -536,6 +624,10 @@
                             </p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Fayenza</span>
                                 <span class="step-leads">Líderes: 
@@ -550,6 +642,10 @@
                             </p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 6 Ciudad Caolín</span>
                                 <span class="step-leads">Líderes: 
@@ -560,6 +656,10 @@
                             <p class="step-notes">◉ Si Typhlosion o Vanilluxe muere, entra con Togekiss o Blastoise y usa Ventisca</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 7 Ciudad Teja</span>
                                 <span class="step-leads">Líderes: 
@@ -577,14 +677,16 @@
                 <!-- KANTO -->
                 <div id="kanto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">         
-                        </div>
                         <div class="map-illustration">
                             <img src="kanto.png" alt="Mapa Kanto" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 1 Ciudad Carmín</span>
                                 <span class="step-leads">Líderes: 
@@ -595,6 +697,10 @@
                             <p class="step-notes">◉ Avalancha y Terremoto</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Azulona</span>
                                 <span class="step-leads">Líderes: 
@@ -606,6 +712,10 @@
                             <p class="step-notes">◉ Si entra primero Dragonite, cambia a Typhlosion por Vanilluxe, y luego cambia a Aerodactyl por Typhlosion en el siguiente turno</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Canela</span>
                                 <span class="step-leads">Líderes: 
@@ -616,6 +726,10 @@
                             <p class="step-notes">◉ Si está de líder Ninetales cambia a cualquier Pokémon por Vanilluxe</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Plateada</span>
                                 <span class="step-leads">Líderes: 
@@ -626,6 +740,10 @@
                             <p class="step-notes">◉ Terremoto y Avalancha</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Azafrán</span>
                                 <span class="step-leads">Líderes: 
@@ -636,6 +754,10 @@
                             <p class="step-notes">◉ Revisa si Aerodactyl tiene PP después de este gimnasio (mínimo debe tener 1 PP)</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 6 Ciudad Fucsia</span>
                                 <span class="step-leads">Líderes: 
@@ -652,14 +774,16 @@
                 <!-- JOHTO -->
                 <div id="johto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">          
-                        </div>
                         <div class="map-illustration">
                             <img src="jotho.png" alt="Mapa Johto" class="map-png">
                         </div>
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 1 Ciudad Trigal</span>
                                 <span class="step-leads">Líderes: 
@@ -670,6 +794,10 @@
                             <p class="step-notes">◉ Vozarron y Estallido</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Malva</span>
                                 <span class="step-leads">Líderes: 
@@ -680,6 +808,10 @@
                             <p class="step-notes">◉ Si llega a salir Pelipper de primero, con Vanilluxe usa Viento Hielo</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Azalea</span>
                                 <span class="step-leads">Líderes: 
@@ -690,6 +822,10 @@
                             <p class="step-notes">◉ Si hay tormenta de arena Aerodactyl Día Soleado</p>
                         </div> 
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Caoba</span>
                                 <span class="step-leads">Líderes: 
@@ -700,6 +836,10 @@
                             <p class="step-notes">◉ Aerodactyl usa Día Soleado</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Olivo</span>
                                 <span class="step-leads">Líderes: 
@@ -710,6 +850,10 @@
                             <p class="step-notes">◉ Si Typhlosion muere entra con Excadrill</p>
                         </div>
                         <div class="route-step">
+                            <div class="step-nav-buttons">
+                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
+                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
+                            </div>
                             <div class="step-header">
                                 <span class="step-title">◉ 6 Ciudad Orquídea</span>
                                 <span class="step-leads">Líderes: 
@@ -747,6 +891,22 @@
 
             document.getElementById(regionName).classList.add("active");
             evt.currentTarget.classList.add("active");
+        }
+
+        // Nueva función para navegar velozmente entre gimnasios individuales
+        function goToGym(button, direction) {
+            const currentStep = button.closest('.route-step');
+            let targetStep;
+
+            if (direction === 'next') {
+                targetStep = currentStep.nextElementSibling;
+            } else if (direction === 'prev') {
+                targetStep = currentStep.previousElementSibling;
+            }
+
+            if (targetStep && targetStep.classList.contains('route-step')) {
+                targetStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function scrollToTop() {
