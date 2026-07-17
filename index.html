@@ -99,15 +99,9 @@
         /* Map Section */
         .map-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr; /* Simplificado al quitar el texto innecesario */
             gap: 30px;
             align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .map-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .map-illustration {
@@ -220,13 +214,13 @@
             gap: 8px;
         }
 
-        /* Estilo mejorado para los minigifs animados */
+        /* Estilo mejorado y AUMENTADO para los minigifs animados */
         .pkmn-gif {
-            width: 48px;  
-            height: 48px; 
+            width: 72px;  /* Aumentado de 48px a 72px */
+            height: 72px; /* Aumentado de 48px a 72px */
             object-fit: contain;
             image-rendering: pixelated; /* Mantiene la estética limpia de píxeles */
-            margin: 0 4px; /* Espaciado lateral para evitar que se pegue al texto */
+            margin: 0 6px; /* Espaciado lateral ligeramente aumentado */
         }
 
         .step-notes {
@@ -321,8 +315,6 @@
                 <!-- HOENN -->
                 <div id="hoenn" class="tab-content active">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">    
-                        </div>
                         <div class="map-illustration">
                             <img src="Hoenn.png" alt="Mapa Hoenn" class="map-png">
                         </div>
@@ -405,8 +397,6 @@
                 <!-- SINNOH -->
                 <div id="sinnoh" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                          
-                        </div>
                         <div class="map-illustration">
                             <img src="Sinnoh.png" alt="Mapa Sinnoh" class="map-png">
                         </div>
@@ -472,8 +462,6 @@
                 <!-- TESELIA -->
                 <div id="teselia" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                            
-                        </div>
                         <div class="map-illustration">
                             <img src="teselia.png" alt="Mapa Teselia" class="map-png">
                         </div>
@@ -573,8 +561,6 @@
                 <!-- KANTO -->
                 <div id="kanto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">         
-                        </div>
                         <div class="map-illustration">
                             <img src="kanto.png" alt="Mapa Kanto" class="map-png">
                         </div>
@@ -648,8 +634,6 @@
                 <!-- JOHTO -->
                 <div id="johto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">          
-                        </div>
                         <div class="map-illustration">
                             <img src="jotho.png" alt="Mapa Johto" class="map-png">
                         </div>
