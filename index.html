@@ -99,9 +99,19 @@
         /* Map Section */
         .map-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Simplificado al quitar el texto innecesario */
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
             align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .map-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .map-info {
+            display: none; /* Oculto si está vacío pero conservado en el DOM */
         }
 
         .map-illustration {
@@ -186,14 +196,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
         }
 
         .step-title {
             font-family: var(--font-title);
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--accent-gold);
             text-shadow: 2px 2px 0px #000;
             letter-spacing: 1px;
@@ -203,24 +213,24 @@
             background-color: var(--accent-red);
             color: var(--text-main); /* Verde Limón */
             border: 3px solid #000;
-            padding: 6px 14px;
+            padding: 8px 18px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             box-shadow: var(--shadow-comic-small);
             transform: rotate(-1deg);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
-        /* Estilo mejorado y AUMENTADO para los minigifs animados */
+        /* GIFs más grandes y centrados de forma óptima */
         .pkmn-gif {
-            width: 72px;  /* Aumentado de 48px a 72px */
-            height: 72px; /* Aumentado de 48px a 72px */
+            width: 90px;  
+            height: 90px; 
             object-fit: contain;
             image-rendering: pixelated; /* Mantiene la estética limpia de píxeles */
-            margin: 0 6px; /* Espaciado lateral ligeramente aumentado */
+            margin: 0 6px; 
         }
 
         .step-notes {
@@ -233,7 +243,7 @@
             border-top: 2px solid #000;
             border-right: 2px solid #000;
             border-bottom: 2px solid #000;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .step-notes:last-child {
@@ -315,6 +325,8 @@
                 <!-- HOENN -->
                 <div id="hoenn" class="tab-content active">
                     <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">    
+                        </div>
                         <div class="map-illustration">
                             <img src="Hoenn.png" alt="Mapa Hoenn" class="map-png">
                         </div>
@@ -397,6 +409,8 @@
                 <!-- SINNOH -->
                 <div id="sinnoh" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">                          
+                        </div>
                         <div class="map-illustration">
                             <img src="Sinnoh.png" alt="Mapa Sinnoh" class="map-png">
                         </div>
@@ -462,6 +476,8 @@
                 <!-- TESELIA -->
                 <div id="teselia" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">                            
+                        </div>
                         <div class="map-illustration">
                             <img src="teselia.png" alt="Mapa Teselia" class="map-png">
                         </div>
@@ -561,6 +577,8 @@
                 <!-- KANTO -->
                 <div id="kanto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">         
+                        </div>
                         <div class="map-illustration">
                             <img src="kanto.png" alt="Mapa Kanto" class="map-png">
                         </div>
@@ -634,6 +652,8 @@
                 <!-- JOHTO -->
                 <div id="johto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
+                        <div class="map-info">          
+                        </div>
                         <div class="map-illustration">
                             <img src="jotho.png" alt="Mapa Johto" class="map-png">
                         </div>
