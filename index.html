@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía de Gimnasios PokéMMO</title>
-    
-    <!-- Optimización de carga para fuentes externas -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fuentes estilo Comic con font-display: swap para evitar bloqueos de renderizado -->
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-dark: #1e1e1e;
-            --card-bg: #2d2d2d;
+            --bg-dark: #1a1921;
+            --card-bg: #252430;
             --accent-red: #ff3e3e;
             --accent-orange: #ff8c3b;
             --accent-gold: #ffcc00;
-            --text-main: #ffffff;
-            --text-muted: #dcdcdc;
-            --border-color: #444;
-            /* Borde grueso clásico de cómic */
-            --border-comic: 3px solid #000;
-            /* Fuentes definidas */
+            --text-main: #ccff00; /* Verde Limón */
+            --text-muted: #ccff00; 
+            --border-color: #000000;
+            /* Borde de cómic súper marcado */
+            --border-comic: 4px solid #000000;
+            /* Sombreado plano estilo Pop-Art / Cómic */
+            --shadow-comic: 6px 6px 0px #000000;
+            --shadow-comic-small: 3px 3px 0px #000000;
+            /* Tipografía cómic y títulos */
             --font-title: 'Bangers', cursive;
             --font-body: 'Comic Neue', cursive;
         }
@@ -38,6 +39,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: var(--font-body);
+            font-weight: 700; /* Forzamos la caligrafía cómic a verse más gruesa y estilizada */
             line-height: 1.5;
             overflow-x: hidden;
             text-rendering: optimizeLegibility;
@@ -47,8 +49,8 @@
 
         /* Top Header */
         header {
-            background: linear-gradient(135deg, #180505 0%, #0c0000 100%);
-            border-bottom: 5px solid var(--accent-red);
+            background: radial-gradient(circle, #3a0d0d 0%, #120202 100%);
+            border-bottom: 6px solid var(--border-color);
             padding: 50px 20px;
             text-align: center;
             position: relative;
@@ -56,18 +58,21 @@
 
         .logo-title {
             font-family: var(--font-title);
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 4px;
-            text-shadow: 3px 3px 0px #000;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-muted);
+            font-size: 1.8rem;
+            color: var(--text-main); /* Verde Limón */
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #000;
         }
 
         .container {
@@ -79,13 +84,13 @@
         /* Sections */
         .section-title {
             font-family: var(--font-title);
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 30px;
             color: var(--accent-red);
             text-transform: uppercase;
-            text-shadow: 2px 2px 0px #000;
-            border-bottom: 4px dashed var(--border-color);
-            padding-bottom: 10px;
+            text-shadow: 3px 3px 0px #000;
+            border-bottom: 5px dashed var(--border-color);
+            padding-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -106,10 +111,11 @@
         }
 
         .map-illustration {
-            background: #0f101a;
-            border-radius: 12px;
-            padding: 10px;
+            background: #ffe699; /* Fondo brillante retro */
+            border-radius: 16px;
+            padding: 12px;
             border: var(--border-comic);
+            box-shadow: var(--shadow-comic);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,6 +127,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            border: 3px solid #000;
             object-fit: contain;
         }
 
@@ -128,30 +135,36 @@
         .tabs-header {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 35px;
         }
 
         .tab-btn {
             background: var(--card-bg);
-            color: var(--text-main);
+            color: var(--text-main); /* Verde Limón */
             border: var(--border-comic);
-            padding: 10px 20px;
+            padding: 12px 24px;
             cursor: pointer;
             font-family: var(--font-title);
-            font-size: 1.2rem;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            transform: skew(-5deg);
+            font-size: 1.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+            transform: skew(-6deg);
+            box-shadow: var(--shadow-comic-small);
             will-change: transform;
         }
 
         .tab-btn:hover {
             background: var(--accent-orange);
+            color: #000;
+            transform: translateY(-3px) skew(-6deg);
+            box-shadow: 5px 5px 0px #000;
         }
 
         .tab-btn.active {
-            background-color: var(--accent-red);
-            transform: scale(1.1) skew(-5deg);
+            background-color: var(--accent-gold);
+            color: #000;
+            transform: scale(1.08) translateY(-4px) skew(-6deg);
+            box-shadow: 6px 6px 0px #000;
         }
 
         /* Timeline list */
@@ -162,11 +175,17 @@
 
         .route-step {
             background: var(--card-bg);
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
             border: var(--border-comic);
-            border-radius: 15px;
+            border-radius: 16px;
             position: relative;
+            box-shadow: var(--shadow-comic);
+            transition: transform 0.2s ease;
+        }
+
+        .route-step:hover {
+            transform: translateY(-2px);
         }
 
         .step-header {
@@ -175,53 +194,109 @@
             align-items: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
         }
 
         .step-title {
             font-family: var(--font-title);
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--accent-gold);
-            text-shadow: 1px 1px 0px #000;
+            text-shadow: 2px 2px 0px #000;
+            letter-spacing: 1px;
         }
 
-        /* Contenedor de los GIFs grandes de los líderes */
         .step-leads {
-            background-color: #000;
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 2px solid var(--accent-red);
-            display: flex;
+            background-color: var(--accent-red);
+            color: var(--text-main); /* Verde Limón */
+            border: 3px solid #000;
+            padding: 6px 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-comic-small);
+            transform: rotate(-1deg);
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            min-height: 75px;
+            gap: 8px;
         }
 
-        /* Estilo para los GIFs grandes sin alterar el diseño */
+        /* Estilo mejorado para los minigifs animados */
         .pkmn-gif {
-            height: 65px;
-            width: auto;
+            width: 48px;  
+            height: 48px; 
             object-fit: contain;
-            filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.6));
-            transition: transform 0.2s ease;
-        }
-
-        .pkmn-gif:hover {
-            transform: scale(1.2);
+            image-rendering: pixelated; /* Mantiene la estética limpia de píxeles */
+            margin: 0 4px; /* Espaciado lateral para evitar que se pegue al texto */
         }
 
         .step-notes {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px;
-            border-radius: 5px;
-            border-left: 4px solid var(--accent-orange);
+            font-size: 1.2rem;
+            color: var(--text-main); /* Verde Limón */
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-left: 6px solid var(--accent-orange);
+            border-radius: 8px;
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .step-notes:last-child {
+            margin-bottom: 0;
         }
 
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+
+        /* Botones de Navegación Flotantes (Comic Style) */
+        .scroll-nav-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .scroll-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main); /* Verde Limón */
+            border: var(--border-comic);
+            width: 55px;
+            height: 55px;
+            font-family: var(--font-title);
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-comic-small);
+            transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+            transform: skew(-3deg);
+            outline: none;
+            user-select: none;
+        }
+
+        .scroll-btn:hover {
+            background-color: var(--accent-gold);
+            color: #000;
+            transform: translateY(-3px) skew(-3deg);
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .scroll-btn:active {
+            transform: translateY(1px) skew(-3deg);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        /* El botón "subir" inicia oculto porque cargamos arriba del todo */
+        #btn-scroll-up {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0) skew(-3deg);
+        }
     </style>
 </head>
 <body>
@@ -255,73 +330,74 @@
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">1. Gimnasio Algaria</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
+                                <span class="step-title">◉ 1 Ciudad Algaria</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">Si Excadrill muere por Lucario, cambia Blastoise inmediatamente. Si Aerodactyl cae por Mismo Destino, entra Typhlosion.</p>
+                            <p class="step-notes">◉ Si Excadrill muere por Lucario, entra con Blastoise. Si Aerodactyl cae, entra Typhlosion.</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">2. Gimnasio Lavacalda</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
+                                <span class="step-title">◉ 2 Ciudad Lavacalda</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Usa Salpicar y Avalancha</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 3 Ciudad Malvalona</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Usar avalancha y Estallido</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 4 Ciudad Férrica</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Usar Avalancha y Terremoto</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 5 Ciudad Petalia</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ ¡Cuidado! Si Chansey o Blissey están en el campo de batalla, saca a Typhlosion por Excadrill y ataca.</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 6 Ciudad Azuliza</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
                                 </span>
                             </div>
-                            <p class="step-notes">Usa Salpicar y Avalancha</p>
+                            <p class="step-notes">◉ Usar Salpicar y Vozarron</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">3. Gimnasio Malvalona</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 7 Ciudad Arborada</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Usar avalancha y Estallido</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">4. Gimnasio Férrica</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
-                                </span>
-                            </div>
-                            <p class="step-notes">Usar Avalancha y Terremoto</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">5. Gimnasio Petalia</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
-                                </span>
-                            </div>
-                            <p class="step-notes">¡Cuidado! Si Chansey o Blissey están en el campo de batalla, saca a Typhlosion por Excadrill y ataca.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">6. Gimnasio Azuliza</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
-                                </span>
-                            </div>
-                            <p class="step-notes">Usar Salpicar y Ventisca</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">7. Gimnasio Arborada</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
-                                </span>
-                            </div>
-                            <p class="step-notes">Si Pelipper o Altaria lideran, usa Viento Hielo con Vanilluxe. Si algun pokemon muere , saca a Blastoise con Salpicar/Ventisca (Dependiendo del clima)</p>
+                            <p class="step-notes">◉ Si Pelipper o Altaria lideran, usa Viento Hielo con Vanilluxe.</p>
+                            <p class="step-notes">◉ Si algun pokemon muere, saca a Blastoise con Salpicar/Ventisca (Dependiendo del clima)</p>
                         </div>
                     </div>
                 </div>
@@ -338,53 +414,57 @@
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">1. Gimnasio Marina</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
+                                <span class="step-title">◉ 1 Ciudad Marina</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
                                 </span>
                             </div>
-                            <p class="step-notes">Si lidera un Lanturn, cambia a Blastoise por Vanilluxe y luego a Excadrill.</p>
+                            <p class="step-notes">◉ Si lidera un Lanturn, cambia a Blastoise por Vanilluxe y luego a Excadrill.</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">2. Gimnasio Rocavelo</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 2 Ciudad Rocavelo</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl"> + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Usa Día Soleado con Aerodactyl y Estallido</p>
+                            <p class="step-notes">◉ Usa Día Soleado con Aerodactyl y Estallido</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">3. Gimnasio Vetusta</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 3 Ciudad Vetusta</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Si sale el sol, cambia Typhlosion por Vanilluxe</p>
+                            <p class="step-notes">◉ Si sale el sol, cambia Typhlosion por Vanilluxe</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">4. Gimnasio Pirita</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
+                                <span class="step-title">◉ 4 Ciudad Pirita</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Si Excadrill está en el campo, Entra Aerodactyl por Vanilluxe.<br>
+                               ◉ Si Vanilluxe cae, entra con Aerodactyl.<br>
+                               ◉ Si Excadrill cae, entra Blastoise</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 5 Ciudad Canal</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">Si Excadrill está en el campo, cambia Aerodactyl por Vanilluxe. Si Vanilluxe cae, entra con Aerodactyl. Si Excadrill cae, entra Blastoise</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">5. Gimnasio Canal</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
-                                </span>
-                            </div>
-                            <p class="step-notes">Si hay tormenta de arena, usa Día Soleado con Aerodactyl. Si Sigue Lloviendo, cambia a tus 2 cables Vanilluxe y Blastoise. Si Skarmory/Moltres Esta en el Campo , entra con Vanilluxe y Blastoise</p>
+                            <p class="step-notes">◉ Si hay tormenta de arena, usa Día Soleado con Aerodactyl<br>
+                               ◉ Si está lloviendo, cambia a Vanilluxe y Blastoise.<br>
+                               ◉ Si Skarmory/Moltres está en el Campo, entra con Vanilluxe y Blastoise</p>
                         </div>
                     </div>
                 </div>
@@ -392,7 +472,7 @@
                 <!-- TESELIA -->
                 <div id="teselia" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                                
+                        <div class="map-info">                            
                         </div>
                         <div class="map-illustration">
                             <img src="teselia.png" alt="Mapa Teselia" class="map-png">
@@ -401,53 +481,91 @@
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">1. Gimnasio Porcelana</span>
-                                <span class="step-leads">
+                                <span class="step-title">◉ 1 Ciudad Porcelana</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Usa Salpicar y Ventisca</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 2 Ciudad Loza</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl"> + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Avalancha y Ventisca</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 3 Ciudad Gress Líder Fuego</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
+                                </span>
+                            </div>
+                            <p class="step-notes">
+                                ◉ Si Aerodactyl es intimidado 2 veces entra con Excadrill y después Aerodactyl<br>
+                                ◉ Si Typhlosion está en el campo, usa con Aerodactyl Danza Lluvia<br>
+                                ◉ Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
+                                ◉ Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
+                                ◉ 2 Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
+                                ◉ 3 Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
+                                ◉ Si intimidan 2 veces a Excadrill o llueve cambia a Excadrill por Vanilluxe y entra Excadrill otra vez<br>
+                                ◉ Si estás contra Simipour + Stoutland, solo ataca, no cambies ⚠️ Cura en el Centro Pokémon ⚠️
+                            </p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 4 Ciudad Mayólica</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">
+                                ◉ Si Ninetales sale, cambia a Typhlosion por Excadrill<br>
+                                ◉ Ve al centro Pokémon si cae debilitado un Pokémon
+                            </p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 5 Ciudad Fayenza</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">
+                                ◉ Si hay tormenta de arena cambia a Togekiss por Vanilluxe<br>
+                                ◉ Si entra Seismitoed cambia a Blastoise por Vanilluxe y después Excadrill<br>
+                                ◉ Si Excadrill se quema, cura la quemadura
+                            </p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 6 Ciudad Caolín</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
                                 </span>
                             </div>
-                            <p class="step-notes">Usa Salpicar y Ventisca</p>
+                            <p class="step-notes">◉ Si Typhlosion o Vanilluxe muere, entra con Togekiss o Blastoise y usa Ventisca</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">2. Gimnasio Fayenza (Yakon)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
+                                <span class="step-title">◉ 7 Ciudad Teja</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Salpicar con Blastoise hace un OHKO masivo a sus tipos Tierra. Togekiss neutraliza los Terremotos rivales al ser Volador.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">3. Gimnasio Losa (Gerania)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
-                                </span>
-                            </div>
-                            <p class="step-notes">Usa Avalancha y Ventisca. El tipo Volador de Gerania cae instantáneamente ante la combinación Roca e Hielo.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">4. Gimnasio Teja (Junco)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
-                                </span>
-                            </div>
-                            <p class="step-notes">Estallido and Avalancha eliminan con facilidad a la gran mayoría de sus Pokémon de tipo Hielo.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">5. Gimnasio Caolín (Iris / Lirio)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
-                                </span>
-                            </div>
-                            <p class="step-notes">Saca provecho de Vanilluxe con Pañuelo Elección y usa Ventisca de forma masiva para contrarrestar a su equipo de Dragones.</p>
+                            <p class="step-notes">
+                                ◉ Usa con Aerodactyl Día soleado y Typhlosion Estallido
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -455,7 +573,7 @@
                 <!-- KANTO -->
                 <div id="kanto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                                 
+                        <div class="map-info">         
                         </div>
                         <div class="map-illustration">
                             <img src="kanto.png" alt="Mapa Kanto" class="map-png">
@@ -464,53 +582,65 @@
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">1. Gimnasio Celeste (Misty)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
-                                </span>
-                            </div>
-                            <p class="step-notes">Usa Vozarrón y Ventisca. Si el clima cambia a lluvia pesada, saca a Vanilluxe para reiniciar con Granizo o mete a Excadrill.</p>
-                        </div>
-                        <div class="route-step">
-                            <div class="step-header">
-                                <span class="step-title">2. Gimnasio Carmín (Lt. Surge)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
+                                <span class="step-title">◉ 1 Ciudad Carmín</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">Terremoto de Excadrill con Rompemoldes limpia los robustos y levitantes de tipo Eléctrico sin problemas. Aerodactyl es inmune gracias a Volador.</p>
+                            <p class="step-notes">◉ Avalancha y Terremoto</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">3. Gimnasio Azul (Erika)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 2 Ciudad Azulona</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Usa Día Soleado con Aerodactyl en el primer turno para potenciar el Estallido de Typhlosion y barrer instantáneamente.</p>
+                            <p class="step-notes" style="margin-bottom: 10px;">◉ Si ponen Día Soleado cambia a Typhlosion por Vanilluxe (si está Victreebel, no cambies)</p>
+                            <p class="step-notes">◉ Si entra primero Dragonite, cambia a Typhlosion por Vanilluxe, y luego cambia a Aerodactyl por Typhlosion en el siguiente turno</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">4. Gimnasio Azafrán (Sabrina)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 3 Ciudad Canela</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Vozarrón + Estallido barren los frágiles Pokémon de tipo Psíquico. Cuidado con posibles usuarios de Banda Focus.</p>
+                            <p class="step-notes">◉ Si está de líder Ninetales cambia a cualquier Pokémon por Vanilluxe</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">5. Gimnasio Fucsia (Koga)</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 4 Ciudad Plateada</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Spam de Avalancha y Estallido. Si hay amenazas con Levitación o Robustez, cambia a Excadrill.</p>
+                            <p class="step-notes">◉ Terremoto y Avalancha</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 5 Ciudad Azafrán</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
+                                </span>
+                            </div>
+                            <p class="step-notes">◉ Revisa si Aerodactyl tiene PP después de este gimnasio (mínimo debe tener 1 PP)</p>
+                        </div>
+                        <div class="route-step">
+                            <div class="step-header">
+                                <span class="step-title">◉ 6 Ciudad Fucsia</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
+                                </span>
+                            </div>
+                            <p class="step-notes" style="margin-bottom: 10px;">◉ Si sale Excadrill usa Avalancha</p>
+                            <p class="step-notes">◉ Si sale Aerodactyl y no tiene PP en Avalancha usa Especial X en Typhlosion</p>
                         </div>
                     </div>
                 </div>
@@ -518,7 +648,7 @@
                 <!-- JOHTO -->
                 <div id="johto" class="tab-content">
                     <div class="map-grid" style="margin-bottom: 25px;">
-                        <div class="map-info">                                  
+                        <div class="map-info">          
                         </div>
                         <div class="map-illustration">
                             <img src="jotho.png" alt="Mapa Johto" class="map-png">
@@ -527,10 +657,10 @@
                     <div class="route-timeline">
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">◉ 1 Gimnasio Trigal</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-title">◉ 1 Ciudad Trigal</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss"> + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
                             <p class="step-notes">◉ Vozarron y Estallido</p>
@@ -538,52 +668,52 @@
                         <div class="route-step">
                             <div class="step-header">
                                 <span class="step-title">◉ 2 Ciudad Malva</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si llega a Salir Pelipper de primero , con Vanilluxe Usa Viento Hielo</p>
+                            <p class="step-notes">◉ Si llega a salir Pelipper de primero, con Vanilluxe usa Viento Hielo</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
                                 <span class="step-title">◉ 3 Ciudad Azalea</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si hay Tormenta de arena Aerodactyl Día Soleado</p>
+                            <p class="step-notes">◉ Si hay tormenta de arena Aerodactyl Día Soleado</p>
                         </div> 
                         <div class="route-step">
                             <div class="step-header">
                                 <span class="step-title">◉ 4 Ciudad Caoba</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">Aerodactyl Usa Dia Soleado</p>
+                            <p class="step-notes">◉ Aerodactyl usa Día Soleado</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
                                 <span class="step-title">◉ 5 Ciudad Olivo</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Thyplosion Muere Entra con Excadrill</p>
+                            <p class="step-notes">◉ Si Typhlosion muere entra con Excadrill</p>
                         </div>
                         <div class="route-step">
                             <div class="step-header">
-                                <span class="step-title">◉ 6 Ciudad Orquidea</span>
-                                <span class="step-leads">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">
-                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
+                                <span class="step-title">◉ 6 Ciudad Orquídea</span>
+                                <span class="step-leads">Líderes: 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
+                                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ opcional contra Granbull (doble intimidación de ventaja), usar Ataque X en Excadrill</p>
+                            <p class="step-notes">◉ Opcional contra Granbull (doble intimidación de ventaja), usar Ataque X en Excadrill</p>
                         </div>
                     </div>
                 </div>
@@ -592,20 +722,49 @@
         </section>
     </div>
 
+    <!-- Contenedor de Botones Flotantes -->
+    <div class="scroll-nav-container">
+        <button id="btn-scroll-up" class="scroll-btn" onclick="scrollToTop()">▲</button>
+        <button id="btn-scroll-down" class="scroll-btn" onclick="scrollToBottom()">▼</button>
+    </div>
+
+    <!-- LÓGICA DE JAVASCRIPT -->
     <script>
         function openRegion(evt, regionName) {
-            document.querySelectorAll(".tab-content").forEach(content => {
-                content.classList.remove("active");
-            });
-            
-            document.querySelectorAll(".tab-btn").forEach(btn => {
-                btn.classList.remove("active");
-            });
-            
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
             document.getElementById(regionName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
-    </script>
 
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        window.onscroll = function() {
+            const btnUp = document.getElementById("btn-scroll-up");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnUp.style.opacity = "1";
+                btnUp.style.pointerEvents = "auto";
+                btnUp.style.transform = "scale(1) skew(-3deg)";
+            } else {
+                btnUp.style.opacity = "0";
+                btnUp.style.pointerEvents = "none";
+                btnUp.style.transform = "scale(0) skew(-3deg)";
+            }
+        };
+    </script>
 </body>
 </html>
