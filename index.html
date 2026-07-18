@@ -175,9 +175,16 @@
             border-radius: 16px;
             position: relative;
             box-shadow: var(--shadow-comic);
-            transition: transform 0.2s ease;
-            /* Añadido para posicionar los botones internos */
-            scroll-margin-top: 20px; 
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            scroll-margin-top: 30px;
+        }
+
+        /* Estilo para cuando el gimnasio ya está completado/oculto */
+        .route-step.collapsed-step {
+            padding: 12px 24px;
+            background-color: #1e1d26;
+            opacity: 0.6;
+            box-shadow: 3px 3px 0px #000;
         }
 
         .route-step:hover {
@@ -188,10 +195,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
             flex-wrap: wrap;
             gap: 12px;
-            padding-right: 90px; /* Espacio para que el texto no choque con los botones nuevos */
+            cursor: pointer; /* Indica que se puede hacer clic */
+            user-select: none;
         }
 
         .step-title {
@@ -200,6 +207,23 @@
             color: var(--accent-gold);
             text-shadow: 2px 2px 0px #000;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Indicador dinámico de si está abierto o cerrado */
+        .step-title::after {
+            content: "▼";
+            font-size: 1rem;
+            color: var(--accent-red);
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .collapsed-step .step-title::after {
+            transform: rotate(-90deg);
+            color: var(--text-main);
         }
 
         .step-leads {
@@ -215,52 +239,35 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: opacity 0.2s ease;
         }
 
-        /* Nuevos botones internos para saltar de Gym */
-        .step-nav-buttons {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 8px;
+        .collapsed-step .step-leads {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .step-nav-btn {
-            background-color: var(--bg-dark);
-            color: var(--accent-gold);
-            border: 2px solid #000;
-            width: 35px;
-            height: 35px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 2px 2px 0px #000;
-            transition: transform 0.1s, background-color 0.1s;
+        /* Contenedor colapsable de las notas */
+        .step-body-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.25s ease-out, margin-top 0.25s ease;
+            margin-top: 15px;
         }
 
-        .step-nav-btn:hover {
-            background-color: var(--accent-orange);
-            color: #000;
-            transform: translateY(-2px);
+        .collapsed-step .step-body-content {
+            max-height: 0;
+            margin-top: 0;
+            pointer-events: none;
         }
 
-        .step-nav-btn:active {
-            transform: translateY(1px);
-            box-shadow: 1px 1px 0px #000;
-        }
-
-        /* Estilo mejorado y AUMENTADO para los minigifs animados */
+        /* Estilo de los minigifs animados */
         .pkmn-gif {
-            width: 72px;  /* Aumentado de 48px a 72px */
-            height: 72px; /* Aumentado de 48px a 72px */
+            width: 72px;  
+            height: 72px; 
             object-fit: contain;
-            image-rendering: pixelated; /* Mantiene la estética limpia de píxeles */
-            margin: 0 6px; /* Espaciado lateral ligeramente aumentado */
+            image-rendering: pixelated; 
+            margin: 0 6px; 
         }
 
         .step-notes {
@@ -325,7 +332,6 @@
             box-shadow: 1px 1px 0px #000;
         }
 
-        /* El botón "subir" inicia oculto porque cargamos arriba del todo */
         #btn-scroll-up {
             opacity: 0;
             pointer-events: none;
@@ -361,103 +367,89 @@
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 1 Ciudad Algaria</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Excadrill muere por Lucario, entra con Blastoise. Si Aerodactyl cae, entra Typhlosion.</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si Excadrill muere por Lucario, entra con Blastoise. Si Aerodactyl cae, entra Typhlosion.</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 2 Ciudad Lavacalda</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usa Salpicar y Avalancha</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usa Salpicar y Avalancha</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 3 Ciudad Malvalona</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usar avalancha y Estallido</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usar avalancha y Estallido</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 4 Ciudad Férrica</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usar Avalancha y Terremoto</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usar Avalancha y Terremoto</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 5 Ciudad Petalia</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ ¡Cuidado! Si Chansey o Blissey están en el campo de batalla, saca a Typhlosion por Excadrill y ataca.</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ ¡Cuidado! Si Chansey o Blissey están en el campo de batalla, saca a Typhlosion por Excadrill y ataca.</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 6 Ciudad Azuliza</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usar Salpicar y Vozarron</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usar Salpicar y Vozarron</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 7 Ciudad Arborada</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Pelipper o Altaria lideran, usa Viento Hielo con Vanilluxe.</p>
-                            <p class="step-notes">◉ Si algun pokemon muere, saca a Blastoise con Salpicar/Ventisca (Dependiendo del clima)</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si Pelipper o Altaria lideran, usa Viento Hielo con Vanilluxe.</p>
+                                <p class="step-notes">◉ Si algun pokemon muere, saca a Blastoise con Salpicar/Ventisca (Dependiendo del clima)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -471,78 +463,68 @@
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 1 Ciudad Marina</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si lidera un Lanturn, cambia a Blastoise por Vanilluxe y luego a Excadrill.</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si lidera un Lanturn, cambia a Blastoise por Vanilluxe y luego a Excadrill.</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 2 Ciudad Rocavelo</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl"> + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usa Día Soleado con Aerodactyl y Estallido</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usa Día Soleado con Aerodactyl y Estallido</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 3 Ciudad Vetusta</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si sale el sol, cambia Typhlosion por Vanilluxe</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si sale el sol, cambia Typhlosion por Vanilluxe</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 4 Ciudad Pirita</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Excadrill está en el campo, Entra Aerodactyl por Vanilluxe.<br>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si Excadrill está en el campo, Entra Aerodactyl por Vanilluxe.<br>
                                ◉ Si Vanilluxe cae, entra con Aerodactyl.<br>
                                ◉ Si Excadrill cae, entra Blastoise</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 5 Ciudad Canal</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si hay tormenta de arena, usa Día Soleado con Aerodactyl<br>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si hay tormenta de arena, usa Día Soleado con Aerodactyl<br>
                                ◉ Si está lloviendo, cambia a Vanilluxe y Blastoise.<br>
                                ◉ Si Skarmory/Moltres está en el Campo, entra con Vanilluxe y Blastoise</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -556,120 +538,106 @@
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 1 Ciudad Porcelana</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Usa Salpicar y Ventisca</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Usa Salpicar y Ventisca</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 2 Ciudad Loza</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl"> + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Avalancha y Ventisca</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Avalancha y Ventisca</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 3 Ciudad Gress Líder Fuego</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise">
                                 </span>
                             </div>
-                            <p class="step-notes">
-                                ◉ Si Aerodactyl es intimidado 2 veces entra con Excadrill y después Aerodactyl<br>
-                                ◉ Si Typhlosion está en el campo, usa con Aerodactyl Danza Lluvia<br>
-                                ◉ Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
-                                ◉ Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
-                                ◉ 2 Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
-                                ◉ 3 Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
-                                ◉ Si intimidan 2 veces a Excadrill o llueve cambia a Excadrill por Vanilluxe y entra Excadrill otra vez<br>
-                                ◉ Si estás contra Simipour + Stoutland, solo ataca, no cambies ⚠️ Cura en el Centro Pokémon ⚠️
-                            </p>
+                            <div class="step-body-content">
+                                <p class="step-notes">
+                                    ◉ Si Aerodactyl es intimidado 2 veces entra con Excadrill y después Aerodactyl<br>
+                                    ◉ Si Typhlosion está en el campo, usa con Aerodactyl Danza Lluvia<br>
+                                    ◉ Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
+                                    ◉ Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
+                                    ◉ 2 Líder Tipo Planta: líder Togekiss + Typhlosion (Vozarron y Estallido)<br>
+                                    ◉ 3 Líder Tipo Agua: líder Togekiss + Excadrill (Vozarron + Terremoto)<br>
+                                    ◉ Si intimidan 2 veces a Excadrill o llueve cambia a Excadrill por Vanilluxe y entra Excadrill otra vez<br>
+                                    ◉ Si estás contra Simipour + Stoutland, solo ataca, no cambies ⚠️ Cura en el Centro Pokémon ⚠️
+                                </p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 4 Ciudad Mayólica</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">
-                                ◉ Si Ninetales sale, cambia a Typhlosion por Excadrill<br>
-                                ◉ Ve al centro Pokémon si cae debilitado un Pokémon
-                            </p>
+                            <div class="step-body-content">
+                                <p class="step-notes">
+                                    ◉ Si Ninetales sale, cambia a Typhlosion por Excadrill<br>
+                                    ◉ Ve al centro Pokémon si cae debilitado un Pokémon
+                                </p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 5 Ciudad Fayenza</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
                                 </span>
                             </div>
-                            <p class="step-notes">
-                                ◉ Si hay tormenta de arena cambia a Togekiss por Vanilluxe<br>
-                                ◉ Si entra Seismitoed cambia a Blastoise por Vanilluxe y después Excadrill<br>
-                                ◉ Si Excadrill se quema, cura la quemadura
-                            </p>
+                            <div class="step-body-content">
+                                <p class="step-notes">
+                                    ◉ Si hay tormenta de arena cambia a Togekiss por Vanilluxe<br>
+                                    ◉ Si entra Seismitoed cambia a Blastoise por Vanilluxe y después Excadrill<br>
+                                    ◉ Si Excadrill se quema, cura la quemadura
+                                </p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 6 Ciudad Caolín</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Typhlosion o Vanilluxe muere, entra con Togekiss o Blastoise y usa Ventisca</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si Typhlosion o Vanilluxe muere, entra con Togekiss o Blastoise y usa Ventisca</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 7 Ciudad Teja</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">
-                                ◉ Usa con Aerodactyl Día soleado y Typhlosion Estallido
-                            </p>
+                            <div class="step-body-content">
+                                <p class="step-notes">
+                                    ◉ Usa con Aerodactyl Día soleado y Typhlosion Estallido
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -683,90 +651,78 @@
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 1 Ciudad Carmín</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill">
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Avalancha y Terremoto</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Avalancha y Terremoto</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 2 Ciudad Azulona</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes" style="margin-bottom: 10px;">◉ Si ponen Día Soleado cambia a Typhlosion por Vanilluxe (si está Victreebel, no cambies)</p>
-                            <p class="step-notes">◉ Si entra primero Dragonite, cambia a Typhlosion por Vanilluxe, y luego cambia a Aerodactyl por Typhlosion en el siguiente turno</p>
+                            <div class="step-body-content">
+                                <p class="step-notes" style="margin-bottom: 10px;">◉ Si ponen Día Soleado cambia a Typhlosion por Vanilluxe (si está Victreebel, no cambies)</p>
+                                <p class="step-notes">◉ Si entra primero Dragonite, cambia a Typhlosion por Vanilluxe, y luego cambia a Aerodactyl por Typhlosion en el siguiente turno</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 3 Ciudad Canela</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif" class="pkmn-gif" alt="Blastoise"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si está de líder Ninetales cambia a cualquier Pokémon por Vanilluxe</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si está de líder Ninetales cambia a cualquier Pokémon por Vanilluxe</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 4 Ciudad Plateada</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Terremoto y Avalancha</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Terremoto y Avalancha</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 5 Ciudad Azafrán</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Revisa si Aerodactyl tiene PP después de este gimnasio (mínimo debe tener 1 PP)</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Revisa si Aerodactyl tiene PP después de este gimnasio (mínimo debe tener 1 PP)</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 6 Ciudad Fucsia</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes" style="margin-bottom: 10px;">◉ Si sale Excadrill usa Avalancha</p>
-                            <p class="step-notes">◉ Si sale Aerodactyl y no tiene PP en Avalancha usa Especial X en Typhlosion</p>
+                            <div class="step-body-content">
+                                <p class="step-notes" style="margin-bottom: 10px;">◉ Si sale Excadrill usa Avalancha</p>
+                                <p class="step-notes">◉ Si sale Aerodactyl y no tiene PP en Avalancha usa Especial X en Typhlosion</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -780,88 +736,76 @@
                     </div>
                     <div class="route-timeline">
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 1 Ciudad Trigal</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss"> + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Vozarron y Estallido</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Vozarron y Estallido</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 2 Ciudad Malva</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/vanilluxe.gif" class="pkmn-gif" alt="Vanilluxe"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si llega a salir Pelipper de primero, con Vanilluxe usa Viento Hielo</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si llega a salir Pelipper de primero, con Vanilluxe usa Viento Hielo</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 3 Ciudad Azalea</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si hay tormenta de arena Aerodactyl Día Soleado</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si hay tormenta de arena Aerodactyl Día Soleado</p>
+                            </div>
                         </div> 
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 4 Ciudad Caoba</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/aerodactyl.gif" class="pkmn-gif" alt="Aerodactyl">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Aerodactyl usa Día Soleado</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Aerodactyl usa Día Soleado</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 5 Ciudad Olivo</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/typhlosion.gif" class="pkmn-gif" alt="Typhlosion"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Si Typhlosion muere entra con Excadrill</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Si Typhlosion muere entra con Excadrill</p>
+                            </div>
                         </div>
                         <div class="route-step">
-                            <div class="step-nav-buttons">
-                                <button class="step-nav-btn" onclick="goToGym(this, 'prev')">▲</button>
-                                <button class="step-nav-btn" onclick="goToGym(this, 'next')">▼</button>
-                            </div>
-                            <div class="step-header">
+                            <div class="step-header" onclick="toggleGym(this)">
                                 <span class="step-title">◉ 6 Ciudad Orquídea</span>
                                 <span class="step-leads">Líderes: 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/togekiss.gif" class="pkmn-gif" alt="Togekiss">  + 
                                     <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/excadrill.gif" class="pkmn-gif" alt="Excadrill"> 
                                 </span>
                             </div>
-                            <p class="step-notes">◉ Opcional contra Granbull (doble intimidación de ventaja), usar Ataque X en Excadrill</p>
+                            <div class="step-body-content">
+                                <p class="step-notes">◉ Opcional contra Granbull (doble intimidación de ventaja), usar Ataque X en Excadrill</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -893,19 +837,23 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Nueva función para navegar velozmente entre gimnasios individuales
-        function goToGym(button, direction) {
-            const currentStep = button.closest('.route-step');
-            let targetStep;
-
-            if (direction === 'next') {
-                targetStep = currentStep.nextElementSibling;
-            } else if (direction === 'prev') {
-                targetStep = currentStep.previousElementSibling;
-            }
-
-            if (targetStep && targetStep.classList.contains('route-step')) {
-                targetStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Nueva lógica para colapsar y saltar automáticamente al siguiente Gym
+        function toggleGym(headerElement) {
+            const currentStep = headerElement.closest('.route-step');
+            
+            // Alternamos la clase de colapsado
+            currentStep.classList.toggle('collapsed-step');
+            
+            // Si acabamos de cerrar el gimnasio, saltamos automáticamente al siguiente
+            if (currentStep.classList.contains('collapsed-step')) {
+                const nextStep = currentStep.nextElementSibling;
+                
+                // Si existe un siguiente gimnasio en la lista, lo enfocamos en pantalla
+                if (nextStep && nextStep.classList.contains('route-step')) {
+                    setTimeout(() => {
+                        nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100); // Pequeño retraso para que la animación de cierre no interfiera
+                }
             }
         }
 
